@@ -1,0 +1,126 @@
+Built-in methods:
+    Methods should be typed in all caps and have arguments separated via ":".
+
+    ADD -> returns addition sum of arguments, E.G: ADD:2:3:5 = 10
+    SUB -> returns subtraction sum of arguments, E.G: SUB:5:3 = 2
+    DIV -> returns division sum of arguments, E.G: DIV:25:5 = 5
+    TDV -> returns floor division sum of arguments, E.G: TVD:25:4 = 6 (actual answer: 6.25)
+    MUL -> returns multiple sum of arguments, E.G: MUL:5:5:2 = 50 
+    PWR -> returns total power of sum of arguments. E.G: PWR:3:2:2 = 81
+    
+Keywords (assignment):
+
+    SET -> For setting variables only, E.G: SET: x = 2
+
+    ANNOUNCE -> For announcing STRINGs (not supported in code) does not require 
+    an "=" to assign it's phrase, E.G: ANNOUNCE Hello, World!
+
+    SAY -> For announcing value of variables/numeric values, E.G: SAY = x / SAY = 5
+
+    There is currently no implementation for joining STRINGs and values in one line together.
+
+Loops/Conditionals:
+    Conditional statements are (as of now) only used in accordance with if statements or loops.
+
+    BGR -> returns boolean for given expression of 2 parts, E.G: BGR:10:2 = True (10>2) 
+    SMR -> returns boolean for given expression of 2 parts, E.G: SMR:10:2 = False (10<2) 
+    EQL -> returns boolean for given expression of 2 parts, E.G: EQL:2:2 = True (2==2)
+    NEQL -> returns OPPOSITE boolean expression of 2 parts relative to EQL, E.G: NEQL:10:10 = False (10!=10)
+
+    Examples:
+
+        All logical operations must follow strict syntax in which the opening and closing braces "{" and "}"
+        must be on their own unique line with no other code present BELOW the corresponding keyword.
+
+        if statements:
+
+            "IF" (case-sensitive) followed by a conditional operator ONLY.
+
+            IF EQL:x:y
+            {
+                SAY yes
+            }
+
+            An else can be associated to the "IF" by typing "ELS" BELOW the "IF"s closing brace.
+
+            ELS
+            {
+                SAY no
+            }
+
+        FOR and WHL (while) loops are initialized via the keyword + its following arguments only.
+
+        FOR loops:
+            
+            For loops are structured similarly to those found in C based languages with adjustments made to fit
+            KScript syntax.
+
+            1 - loop iterator (destroyed on loop end) and it's start value (can be variable)
+            2 - The condition that determines the loops active time.
+            3 - "++" or "--", iterator to count up or down.
+
+                  (1)     (2)    (3)
+            FOR = i:0, SMR:i:10, ++
+            {
+                SAY = i
+            }
+
+
+
+        WHL loops:
+
+            WHL (while) loops are very simple and follow regular convention (while condition)
+
+            SET x = 0
+            WHL BGR:10:x
+            {
+                SAY = x
+                SET x = ADD:x:1
+            }
+
+Variables:
+    
+    Variables once created hold the value assigned to them unless assigned a new value directly or by 
+    mathmatical operation.
+
+    By default, there are 3 variables created for you:
+
+        pi - Pi to 10 places.
+        e - Eulars constant to 10 places.
+        time - The current time in seconds since the epoch.
+
+        **NOTE**: "time" is a variable, NOT a method! The time variable is measured ONCE at program start.
+
+    These variables CAN be overwritten.
+
+    These variables are not available in custom function definitions due to function scoping, but can be 
+    passed in as arguments if needed.
+
+Custom methods:
+    Custom methods are fairly straight forward to define and use. 
+
+    Defining a new function requires the function keyword (FNC), the function's name and it's arguments.
+
+    E.G: (A function to return the factorial sum of a number):
+
+        FNC Factorial:x
+        {
+            SET total = x
+
+            FOR = i:2, BGR:x:i, ++
+            {
+                SET total = MUL:total:i
+            }
+
+            RTN = total
+        }
+    
+    The last line of a function MUST ALWAYS be the ending RTN statement (RTN = value_to_return). If the last line
+    is NOT a RTN statement, the interpreter will raise an error.
+
+    Custom functions can be called AFTER their definitions, separating arguments using ":" as in the function
+    definition like so:
+
+        SET n = 5
+        SET result = Factorial:n
+        SAY = result 
