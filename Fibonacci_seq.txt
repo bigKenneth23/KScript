@@ -1,0 +1,18 @@
+FNC = Fib:idx
+{
+    SET x = 0
+    SET y = 1
+
+    FOR = i:1, SMR:i:idx, ++
+    {
+	SET y = ADD:y:x
+	SET x = SUB:y:x
+    }
+
+    RTN = y
+}
+
+FOR = i:2, SMR:i:20, ++
+{
+    SAY = Fib:i
+}

@@ -1,0 +1,17 @@
+// While 
+
+SET x = 0
+
+WHL = NEQL:x:10
+{
+    SAY = x
+
+    SET x = ADD:x:1
+}
+
+// For
+
+FOR = i:10, NEQL:i:-1, --
+{
+    SAY = i
+}

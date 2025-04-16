@@ -1,0 +1,16 @@
+FNC = Find_C:a:b
+{
+    SET as = PWR:a:2
+    SET bs = PWR:b:2
+
+    SET cs = ADD:as:bs 
+    SET c = PWR:cs:0.5
+
+    RTN = c
+}
+
+SET a = 10
+SET b = 5
+SET c = Find_C:a:b 
+
+SAY = c

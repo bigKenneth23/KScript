@@ -1,0 +1,50 @@
+FNC = Collatz:x
+{
+    SET m = MOD:x:2
+
+    IF EQL:m:0
+    {
+	SET val = DIV:x:2
+    }
+
+    ELS
+    {
+	SET val = MUL:x:3
+	SET val = ADD:val:1
+    }
+
+    RTN = val
+}
+
+
+SET start = 15646
+SET highest = start
+
+SET i = 1
+
+
+WHL = NEQL:start:1
+{
+    SET start = Collatz:start
+
+    IF BGR:start:highest
+    {
+	SET highest = start
+    }
+
+    SET i = ADD:i:1
+}
+
+
+
+ANNOUNCE --------------------
+
+ANNOUNCE Total Steps:
+SAY = i
+
+ANNOUNCE --------------------
+
+ANNOUNCE Highest Number Found:
+SAY = highest
+
+ANNOUNCE --------------------

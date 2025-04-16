@@ -1,0 +1,42 @@
+// Define cirlce origin
+
+SET ox = 0
+SET oy = 0
+
+// Define circle radius
+
+SET rx = 5
+SET ry = 5
+
+// Define current position
+
+SET cx = 5
+SET cy = 5
+
+// Define distance vars
+
+SET dx = SUB:cx:ox
+SET dy = SUB:cy:oy
+
+// Distance squared
+
+SET dxsq = PWR:dx:2
+SET dysq = PWR:dy:2
+
+// Radius squared
+
+SET rxsq = PWR:rx:2
+SET rysq = PWR:ry:2
+
+// Find/total axis ratios squared
+
+SET x1 = DIV:dxsq:rxsq
+SET y1 = DIV:dysq:rysq
+SET z1 = ADD:x1:y1
+
+// Get final distance ratio relative to circle origin
+
+SET z = PWR:z1:0.5
+
+SAY = z
+        

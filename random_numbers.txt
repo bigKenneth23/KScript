@@ -1,0 +1,15 @@
+FNC = Rand_Int:min:max:time
+{
+    SET d = SUB:max:min
+    SET m = MOD:time:1
+
+    SET x = MUL:d:m
+
+    SET y = ADD:min:x
+
+    SET y = TDV:y:1
+
+    RTN = y
+}
+
+SAY = Rand_Int:100:200:time
